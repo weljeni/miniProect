@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Counter from "./components/Counter";
+import Form from "./components/Form";
+import FormList from "./components/FormList";
+import Receipts from "./components/Receipts";
+
+
 
 function App() {
+  const [task, setTask] = useState([])
+  const [isLogin, setIsLogin] = useState(false)
+  function handleTask(newObj) {
+    let newTodos = [...task]
+    newTodos.push(newObj)
+    setTask(newTodos)
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Counter />
+      <Receipts />
+
+      {isLogin ? <FormList setIsLogin={setIsLogin} task={task} /> : <Form setIsLogin={setIsLogin} />}
+
     </div>
   );
 }
