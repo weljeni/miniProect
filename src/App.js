@@ -19,7 +19,10 @@ function App() {
       <Counter />
       <Receipts />
 
-      {isLogin ? <FormList setIsLogin={setIsLogin} task={task} /> : <Form setIsLogin={setIsLogin} />}
+      {isLogin ? (
+        <FormList setIsLogin={setIsLogin} task={task} />
+      ) : (
+        <Form setIsLogin={setIsLogin} handleTask={handleTask} />)}
 
     </div>
   );
